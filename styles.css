@@ -33,18 +33,3 @@ body {
   font-size: 110px;
 }
 
-.grid-item-1, .grid-item-2, .grid-item-3{
-  border-top: 0px;
-}
-
-.grid-item-1, .grid-item-4, .grid-item-7{
-  border-left: 0px;
-}
-
-.grid-item-3, .grid-item-6, .grid-item-9{
-  border-right: 0px;
-}
-
-.grid-item-7, .grid-item-8, .grid-item-9{
-  border-bottom: 0px;
-}
