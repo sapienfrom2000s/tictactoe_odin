@@ -1,38 +1,50 @@
-body{
+body {
   height: 100vh;
   width: 100vw;
   margin: 0;
+  margin-top: -80px;
   padding: 0;
   background: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.board{
-  width: 40%;
-  height: 65%;
-  background: black;
+.header{
+  color: coral;
+  font-size: 60px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
+  padding: 15px;
 }
 
-.board > div{
-  border: 5px solid red;
+.grid-container>* {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid brown;
+  padding: 10px;
+  text-align: center;
+  font-size: 110px;
 }
 
-.board > .grid_1, .board > .grid_2, .board > .grid_3{
+.grid-item-1, .grid-item-2, .grid-item-3{
   border-top: 0px;
 }
 
-.board > .grid_1, .board > .grid_4, .board > .grid_7{
+.grid-item-1, .grid-item-4, .grid-item-7{
   border-left: 0px;
 }
 
-.board > .grid_3, .board > .grid_6, .board > .grid_9{
+.grid-item-3, .grid-item-6, .grid-item-9{
   border-right: 0px;
 }
 
-.board > .grid_7, .board > .grid_8, .board > .grid_9{
+.grid-item-7, .grid-item-8, .grid-item-9{
   border-bottom: 0px;
 }

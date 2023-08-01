@@ -14,6 +14,7 @@ const Players = (function(){
   for(var i = 1; i <= 9; i++){
     var new_div = document.createElement('div')
     new_div.classList.add(`grid_${i}`)
+    new_div.innerHTML = 0
     board.appendChild(new_div) 
   }
 })();
