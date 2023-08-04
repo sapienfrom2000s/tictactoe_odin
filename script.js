@@ -4,8 +4,8 @@ const Gameboard = (function(){
 })();
 
 const Players = (function(){
-  const player1 = { name: 'Joe', symbol: 'X' }
-  const player2 = { name: 'Jean', symbol: 'O'}
+  const player1 = { name: 'Joe', symbol: 'X', score: 0 }
+  const player2 = { name: 'Jean', symbol: 'O', score: 0}
   return { player1, player2 }
 })();
 
@@ -82,4 +82,42 @@ function isWinning(symbol){
     return ((board[1] == board[5] && board[5] == board[9] && board[9] == symbol) ||
      (board[3] == board[5] && board[5] == board[7] && board[7] == symbol))
   }
+}
+
+(function handlePlayersForm(){
+  let playersForm = document.getElementById("players-form");
+  playersForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+  
+    let player1Name = document.getElementById("player-1-name");
+    let player2Name = document.getElementById("player-2-name");
+  
+    if (player1Name.value == "" || player2Name.value == "") {
+      alert('Name field cannot be blank')
+    } else {
+      Players.player1.name = player1Name.value
+      Players.player2.name = player2Name.value
+      hideModal()
+      displayPlayersInfo()
+    }
+  });
+})();
+
+function hideModal(){
+  let modal = document.querySelector(".intro-modal")
+  modal.style.display = 'none'
+}
+
+function displayPlayersInfo(){
+  let player_1_name_holder = document.querySelector(".player-1-info > .name")
+  let player_1_symbol_holder = document.querySelector(".player-1-info > .symbol")
+
+  let player_2_name_holder = document.querySelector(".player-2-info > .name")
+  let player_2_symbol_holder = document.querySelector(".player-2-info > .symbol")
+
+  player_1_name_holder.innerHTML = Players.player1.name
+  player_1_symbol_holder.innerHTML = Players.player1.symbol
+
+  player_2_name_holder.innerHTML = Players.player2.name
+  player_2_symbol_holder.innerHTML = Players.player2.symbol
 }

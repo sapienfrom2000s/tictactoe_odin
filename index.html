@@ -9,16 +9,22 @@
   </head>
   <body>
     <h3 class="header">Tic-Tac-Toe</h3>
-    <div class="grid-container">
-      <div class="grid-item" data-grid-index='1'></div>
-      <div class="grid-item" data-grid-index='2'></div>
-      <div class="grid-item" data-grid-index='3'></div>  
-      <div class="grid-item" data-grid-index='4'></div>
-      <div class="grid-item" data-grid-index='5'></div>
-      <div class="grid-item" data-grid-index='6'></div>  
-      <div class="grid-item" data-grid-index='7'></div>
-      <div class="grid-item" data-grid-index='8'></div>
-      <div class="grid-item" data-grid-index='9'></div>  
+    <div class="grid-container-players-info">
+      <div class="grid-container">
+        <div class="grid-item" data-grid-index='1'></div>
+        <div class="grid-item" data-grid-index='2'></div>
+        <div class="grid-item" data-grid-index='3'></div>  
+        <div class="grid-item" data-grid-index='4'></div>
+        <div class="grid-item" data-grid-index='5'></div>
+        <div class="grid-item" data-grid-index='6'></div>  
+        <div class="grid-item" data-grid-index='7'></div>
+        <div class="grid-item" data-grid-index='8'></div>
+        <div class="grid-item" data-grid-index='9'></div>  
+      </div>
+      <div class="players-info">
+        <p class="player-1-info"><span class="score">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="symbol"></span> - <span class="name"></span></p>
+        <p class="player-2-info"><span class="score">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="symbol"></span> - <span class="name"></span></p>
+      </div>
     </div>
     <div class="intro-modal">
       <div class="card-game-intro">
@@ -26,11 +32,11 @@
         <form class="players-form" id="players-form">
           <div class="player-1">
             <label for="player-1">Player1</label><br>
-            <input type="text" id="player-1" name="player-1" placeholder="Name of the first Player"><br>
+            <input type="text" id="player-1-name" name="player-1" placeholder="Name of the first Player"><br>
           </div>
           <div class="player-2">
             <label for="player-2">Player2</label><br>
-            <input type="text" id="player-2" name="player-2" placeholder="Name of the second Player"><br>
+            <input type="text" id="player-2-name" name="player-2" placeholder="Name of the second Player"><br>
           </div>
           <input type="submit" value="Play" />
         </form>
