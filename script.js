@@ -34,7 +34,6 @@ function disablegridinput(){
 
 function main(event){
   input(event)
-  // debugger
   isGameover()
   Turn.number++
 }
@@ -47,7 +46,6 @@ function isGameover(){
   }
   else if(isDraw()){
     console.log('Draw')
-    //just check if Turn is 9th
     //modal pop up
   }
 }
