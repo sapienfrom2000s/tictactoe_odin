@@ -114,6 +114,11 @@ function hideModal(){
   modal.style.display = 'none'
 }
 
+function showModal(){
+  let modal = document.querySelector(".intro-modal")
+  modal.style.display = 'flex'
+}
+
 function displayPlayersInfo(){
   let player_1_name_holder = document.querySelector(".player-1-info > .name")
   let player_1_symbol_holder = document.querySelector(".player-1-info > .symbol")
@@ -174,7 +179,27 @@ function hide_gameover_div_container(){
     hide_gameover_div_container()
     enablegridinput()
   })
-})()
+})();
+
+(function activate_newgame_button(){
+  const newgame_button = document.querySelector('.btn-newgame')
+  newgame_button.addEventListener('click', () => {
+    resetBoard()
+    displayNewBoard()
+    resetTurnNumber()
+    resetScores()
+    showModal()
+    hide_gameover_div_container()
+    displayPlayersInfo()
+    display_score()
+    enablegridinput()
+  })
+})();
+
+function resetScores(){
+  Players.player1.score = 0
+  Players.player2.score = 0
+}
 
 function resetBoard(){
   Gameboard.data = new Array(10).fill(null);
