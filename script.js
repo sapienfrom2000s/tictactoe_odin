@@ -20,11 +20,11 @@ const Active_Player = (function(){
   }
 })();
 
-(function enablegridinput(){
+function enablegridinput(){
   var grid = document.querySelectorAll('.grid-container > *')
   grid.forEach(item => {
     item.addEventListener('click', main, { once:true })
-})})();
+})};
 
 function disablegridinput(){
   var grid = document.querySelectorAll('.grid-container > *')
@@ -34,19 +34,21 @@ function disablegridinput(){
 
 function main(event){
   input(event)
-  isGameover()
+  gameover()
   Turn.number++
 }
 
-function isGameover(){
+function gameover(){
   if(isWinning(Active_Player().symbol)){
     disablegridinput()
-    console.log('won')
-    //modal pop up
+    display_message(`${Active_Player().name} won the game`)
+    update_score('win')
+    show_gameover_div_container()
   }
   else if(isDraw()){
-    console.log('Draw')
-    //modal pop up
+    display_message('Draw')
+    update_score('draw')
+    show_gameover_div_container()
   }
 }
 
@@ -94,7 +96,11 @@ function isWinning(symbol){
   
     if (player1Name.value == "" || player2Name.value == "") {
       alert('Name field cannot be blank')
-    } else {
+    }
+    else if(player1Name.value.length > 10 || player2Name.value.length > 10){
+      alert('Name length cannot be more than 10 characters')
+    }
+    else {
       Players.player1.name = player1Name.value
       Players.player2.name = player2Name.value
       hideModal()
@@ -121,3 +127,72 @@ function displayPlayersInfo(){
   player_2_name_holder.innerHTML = Players.player2.name
   player_2_symbol_holder.innerHTML = Players.player2.symbol
 }
+
+function display_message(message){
+  let message_container = document.querySelector(".div-round-over > .message")
+  message_container.innerHTML = message
+}
+
+function update_score(result){
+
+  if(result === 'win'){
+    Active_Player().score++
+  }
+  else
+  {
+    Players.player1.score++
+    Players.player2.score++
+  }
+  display_score()
+}
+
+function display_score(){
+  let player_1_score = document.querySelector(".player-1-info > .score")
+  let player_2_score = document.querySelector(".player-2-info > .score")
+
+  player_1_score.innerHTML = Players.player1.score
+  player_2_score.innerHTML = Players.player2.score
+}
+
+function show_gameover_div_container(){
+  document.querySelector(".div-round-over").style.visibility = 'visible'
+}
+
+function hide_gameover_div_container(){
+  document.querySelector(".div-round-over").style.visibility = 'hidden'
+}
+
+(function activate_reply_button(){
+  const newround_button = document.querySelector('.btn-newround')
+  newround_button.addEventListener('click', () => {
+    resetBoard()
+    displayNewBoard()
+    swapTurns()
+    resetTurnNumber()
+    displayPlayersInfo()
+    display_score()
+    hide_gameover_div_container()
+    enablegridinput()
+  })
+})()
+
+function resetBoard(){
+  Gameboard.data = new Array(10).fill(null);
+}
+
+function swapTurns(){
+  const temp = Players.player1
+  Players.player1 = Players.player2
+  Players.player2 = temp
+}
+
+function resetTurnNumber(){
+  Turn.number = 1
+}
+
+function displayNewBoard(){
+  document.querySelectorAll('.grid-item').forEach((elt)=>{
+    elt.innerHTML = ""
+})}
+
+enablegridinput();

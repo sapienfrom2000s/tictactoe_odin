@@ -87,3 +87,30 @@ input[type="submit"]{
   display: flex;
   width: 480px;
 }
+
+.div-round-over{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  visibility: hidden;
+}
+
+.btn-newgame, .btn-replay{
+  padding: 5%;
+}
+
+.container-btns{
+  display: flex;
+  justify-content: center;
+}
+
+.div-round-over > .message {
+  background: #e9e9ed;
+  text-align: center;
+  padding: 10px;
+}
+
+.container-btns{
+  display: flex;
+  gap: 15px;
+}
